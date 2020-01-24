@@ -40,7 +40,9 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-jest-diff": "^1.0.2",
+    "chai-jest-snapshot": "^2.0.0",
     "dirty-chai": "^2.0.1",
+    "enzyme-to-json": "^3.4.3",
     "sinon": "^8.1.1",
     "sinon-chai": "^3.4.0"
   }
