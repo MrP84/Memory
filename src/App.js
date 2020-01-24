@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import shuffle from 'lodash.shuffle'
 import Card from "./App/Card"
 import GuessCount from "./App/GuessCount";
-import HallOfFame, {FAKE_HOF} from "./App/HallOfFame";
+import HallOfFame from "./App/HallOfFame";
+import HighScoreInput from "./Classes/HighScoreInput";
 import './css/App.css'
 
 const SIDE = 6;
@@ -14,6 +15,7 @@ class App extends Component {
     cards: this.generateCards(),
     currentPair: [],
     guesses: 0,
+    hallOfFame: null,
     matchedCardIndices: []
   };
 
@@ -78,8 +80,12 @@ class App extends Component {
     setTimeout(() => this.setState({currentPair: []}), DELAY);
   }
 
+  displayHallOfFame = (hallOfFame) => {
+    this.setState({ hallOfFame })
+  }
+
   render() {
-    const { cards, guesses, matchedCardIndices } = this.state;
+    const { cards, guesses, matchedCardIndices, hallOfFame } = this.state;
     const won = matchedCardIndices.length === cards.length;
     return (
       <div className="memory">
@@ -91,7 +97,13 @@ class App extends Component {
                 key={index}
                 onClick={this.handleCardClick}/>
         ))}
-        {won && <HallOfFame entries={FAKE_HOF} />}
+        {won && (
+          hallOfFame ? (
+            <HallOfFame entries={hallOfFame}/>
+        ) : (
+          <HighScoreInput guesses={guesses} onStored={this.displayHallOfFame} />
+            ))
+        }
       </div>
     )
   }
