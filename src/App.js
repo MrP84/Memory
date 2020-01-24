@@ -7,7 +7,7 @@ import HighScoreInput from "./Classes/HighScoreInput";
 import './css/App.css'
 
 const SIDE = 6;
-const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿';
+export const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿';
 const DELAY = 750;
 
 class App extends Component {
